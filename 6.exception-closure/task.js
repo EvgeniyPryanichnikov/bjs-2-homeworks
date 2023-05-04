@@ -28,28 +28,25 @@ class Triangle {
         this.c = c;
    
 
-        if(this.a + this.b < this.c || this.a + this.c < this.b || this.b + this.c < this.a) {
+        if(a + b < c || a + c < b || b + c < a) {
             throw new Error("Треугольник с такими сторонами не существует");
         }
     }  
     
     get perimeter() {
-       let per = this.a + this.b + this.c;
-       return per;
+       return this.a + this.b + this.c;
     }
 
     get area() {
-        let result = (this.а + this.b + this.c) / 2;
+        let result = this.perimeter / 2;
         let total = Math.sqrt(result * (result - this.a) * (result - this.b) * (result - this.c));
-        return total.toFixed(3);
+        return +total.toFixed(3);
     }
 }   
 
 function getTriangle(a, b, c) {
     try {
-        let trngl = new Triangle(a, b, c)
-        return trngl
-
+        return new Triangle(a, b, c)
     } catch (error) {
         return {
             get perimeter() {
@@ -63,5 +60,6 @@ function getTriangle(a, b, c) {
 
     }
 }
+
+// Спасибо за подробное объяснение)
   
-// Добрый день, я не понимаю где ошибка. Тесты ругаются на вычисление площади 
